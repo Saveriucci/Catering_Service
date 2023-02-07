@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+
+	<head>
+		<title> Catering Service Homepage </title>
+	</head>
+
+	<body>
+		<div class = "sottofondo">
+		    <div class= "stile">
+		     	<a sec:authorize="!isAuthenticated()" th:href="@{/login}";> login</a>
+		      </div> 
+		      
+		      <div class = "stile">
+		      	<a sec:authorize="!isAuthenticated()" th:href="@{/register}";> registrati</a>
+		       </div>
+		       
+		       <div class = "stile">
+		      		<a sec:authorize="isAuthenticated()" th:href="@{/logout}";> Log out</a>
+		       </div>
+		       
+		       <center>
+			       	<h1>CateringService</h1>
+			       	<h2>Thomas Farinelli, 02.2023</h2>
+			       	<a href = "https://github.com/Saveriucci/Catering-Service">
+			        	<h4>github.com/catering-service</h4>
+			        </a>
+		       </center> 
+		       
+	      	<hr></hr>
+	      </div>
+	        
+	  <div id = "mainLeft">
+	  
+	      <h2> Gli Chef:</h2>
+	      <div id ="es">
+	        <div th:each="chef : ${chefs}">
+	          <div>
+	          	<a th:href = "@{'/chef/' + ${chef.id}}" >  
+	            	<h5 th:text="${chef.cognomeChef}">Cognome Chef</h5> 
+	            	<img th:src = "${chef.immagine}" width="180" height="180">
+	            </a>      
+	          </div>
+	        </div>
+	      </div>
+	      <a  th:href = "@{'/chef/'}"> visualizza di piu</a>
+	      
+	      <h2> Alcuni Buffet:</h2>
+	 	  <div id ="es";>
+	        <div  th:each="buffet : ${buffets}">
+	          <div>
+	            <h5 th:text="${buffet.nomeBuffet}"> Nome </h5>
+	            <a th:href = "@{'/buffet/' + ${buffet.id}}" >  
+	            	<img th:src = "${buffet.immagine}" width="180" height="180">
+	            </a>
+	          </div>
+	        </div>
+	       </div>
+	        <a th:href = "@{'buffet/'}"> visualizza di piu</a>
+	        
+	        <h2> Alcuni Piatti:</h2>
+	 	  <div id ="es";>
+	        <div  th:each="piatto : ${piatti}">
+	          <div>
+	            <h5 th:text="${piatto.nomePiatto}"> Nome </h5>
+	            <a th:href = "@{'/piatto/' + ${piatto.id}}" >  
+	            	<img th:src = "${piatto.immagine}" width="180" height="180">
+	            </a>
+	          </div>
+	        </div>
+	       </div>
+	       <a th:href = "@{'/piatto/'}"> visualizza di piu</a>
+	  </div>
+	  <div id = "mainRight">
+	  	<a th:href = "@{'/ingrediente/'}" > Qui per visualizzare tutti gli ingredienti</a>
+	  	<a th:href = "@{/buffet/ricerca/}" > Qui per effettuare ricerche sui Buffet</a>
+	  	<a th:href = "@{/chef/ricerca/}" > Qui per effettuare ricerche sugli Chef</a>
+	  	<a th:href = "@{/piatto/ricerca/}" > Qui per effettuare ricerche sui Piatti</a>
+	  	<a th:href = "@{/ingrediente/ricerca/}" > Qui per effettuare ricerche sugli ingredienti</a>
+	  	<a sec:authorize= "hasAuthority('admin')" th:href = "@{'/buffet/add/'}"> Inserisci Buffet</a>
+	  	<a sec:authorize= "hasAuthority('admin')" th:href = "@{'/chef/add/'}"> Inserisci Chef</a>
+	  	<a sec:authorize= "hasAuthority('admin')" th:href = "@{'/piatto/add/'}"> Inserisci Piatto</a>
+	  	<a sec:authorize= "hasAuthority('admin')" th:href = "@{'/ingrediente/add/'}"> Inserisci Ingrediente</a>
+	  </div>
+	</body>
+</html>

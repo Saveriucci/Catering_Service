@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title>Piatto</title>
+  </head>
+  <body>
+    <center><div th:object = "${piatto}">
+    	<div th:if="${#fields.hasGlobalErrors()}">
+			<p class ="errori" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+		</div>
+      <div th:text = " ${piatto.nomePiatto}"><h1> Nome Buffet</h1>
+      </div>
+     <div>
+        <img th:src = "${piatto.immagine}" width="180" height="180" alt ="..."> 
+      </div>
+        
+      <div>
+        <p th:text = "${piatto.descrizione}"> descrizione buffet</p>
+      </div>
+    </div></center>
+    <a sec:authorize= "hasAuthority('admin')" th:href = "@{'/piatto/edit/' + ${piatto.id}}" >Modifica</a><hr>
+     <h2 class = "allineamento"> Lista Ingredienti: </h2>
+      <div th:if ="${!piatto.ingredienti.isEmpty()}">
+        <div th:object = " ${piatto.ingredienti}">
+          <div  th:each="ingrediente : ${piatto.ingredienti}">
+            <div>
+              <h5 th:text="${ingrediente.nome}"> Nome </h5>
+              <a th:href = "@{'/ingrediente/' + ${ingrediente.id}}" >
+                <img th:src = "${ingrediente.immagine}" width="180" height="180">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:unless = "${!piatto.ingredienti.isEmpty()}"><p> ingredienti non ancora presenti</p></div>
+      
+      <h2 class = "allineamento"> Inserito nel Buffet: </h2>
+      <div th:object = "${piatto.buffet}">
+      	<div th:if ="${piatto.buffet != null}">
+         	<h5 th:text="${piatto.buffet.nomeBuffet}"> Nome </h5>
+            	<a th:href = "@{'/buffet/' + ${piatto.buffet.id}}" >
+          			<img th:src = "${piatto.buffet.immagine}" width="180" height="180">
+          	 	</a>
+        </div>
+        <div th:unless ="${piatto.buffet}"><p> Piatto non ancora inserito in un Buffet</p></div>
+      </div>
+      
+	<footer>
+	  <span>
+	  	<p>
+	  		<a th:href = "@{'/piatto/'}">Visualizza tutti i Piatti</a>
+	  		<a th:href = "@{'/'}">Torna alla Homepage</a>
+	  		<a sec:authorize= "hasAuthority('admin')" th:href = "@{'/piatto/add'}">Inserisci un altro Piatto</a>
+	  	</p>
+	  </span>
+	</footer> 
+  </body>
+</html>
+

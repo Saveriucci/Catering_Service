@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title> Ricerca uno Chef per Nazionalita</title>
+  </head>
+  <body>
+		<center>
+			<form method = "post" th:action="@{'/chef/ricerca/'}">
+				<input type="text"  name = "nazionalita" required>
+				<button type="submit"> Ricerca Chef per Nazionalita</button> 
+			</form>
+		<center>
+  </body>
+</html>

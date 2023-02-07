@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title> Ricerca un Piatto</title>
+  </head>
+  <body>
+		<center>
+			<form method = "post" th:action="@{'/piatto/ricerca/'}">
+				<input type="text"  name = "nomePiatto" required>
+				<button type="submit"> Ricerca Piatto per Nome</button> 
+			</form>
+		<center>
+  </body>
+</html>

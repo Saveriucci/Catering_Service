@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title> Aggiungi Buffet allo Chef</title>
+  </head>
+  <body>
+  	<fieldset>
+    	<legend>quale Buffet vuoi aggiungere?</legend>
+
+    	<div th:each = "buffet : ${listaBuffets}">
+    	  <p th:text = "${buffet.nomeBuffet}">nome Buffet</p>
+    	  <img th:src ="${buffet.immagine}" alt ="..."/>
+    	</div>
+  	</fieldset>
+ 	<p> scrivi il nome del buffet che vuoi aggiungere</p>
+	 <form th:action = "@{'/chef/add/listaBuffet/' + ${chef.id}}" method = "post">
+ 		<input type = "text" name = "nomeChef" required/>
+ 		<input type = "submit" value = "aggiungi Buffet"/>
+	 </form>
+  </body>
+</html>
