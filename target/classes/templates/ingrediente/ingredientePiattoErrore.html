@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title> Aggiunta di un Ingrediente ad un Piatto Errore</title>
+  </head>
+  <body class = "errori">
+  	<center>
+			<h1> Il Piatto Inserito Non E' Corretto!</h1>
+			<a th:href = "@{'/ingrediente/add/piatto/' + ${id}}">Torna Alla Form di Inserimento Precendente</a>
+	  		<a th:href = "@{'/'}">Torna alla Homepage</a>
+	<center>
+  </body>
+</html>
+</html>

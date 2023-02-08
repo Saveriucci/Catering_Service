@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title> Aggiungi Ingrediente ad un Piatto</title>
+  </head>
+  <body>
+  	<div th:if = "${!listaPiatti.isEmpty()}">
+	  	<fieldset>
+		    <legend> A quale Piatto vuoi aggiungere il <legend th:text = "${ingrediente.nome}"></legend> ?</legend>
+		
+		    <div th:each = "piatto : ${listaPiatti}">
+		      <p th:text = "${piatto.nomePiatto}">nome Buffet</p>
+		      <img th:src ="${piatto.immagine}" alt ="..."/>
+		    </div>
+		</fieldset>
+		
+		<p> scrivi il nome dell ingrediente che vuoi aggiungere</p>
+		
+		<form th:action = "@{'/ingrediente/add/piatto/' + ${ingrediente.id}}" method = "post">
+			<input type = "text" name = "nomePiatto" required/>
+		 	<input type = "submit" value = "aggiungi Ingrediente"/>
+		</form>
+	</div>
+	<div th:unless = "${!listaPiatti.isEmpty()}">
+			<form th:action = "@{'/ingrediente/' + ${ingrediente.id}}" method = "get">
+			<p>Piatti non ancora inseriti</p>
+		 	<input type = "submit" value = "Torna alla Presentazione del Piatto"/>
+		</form>
+	</div>
+  </body>
+</html>

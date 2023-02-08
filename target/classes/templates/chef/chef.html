@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title>Chef</title>
+  </head>
+  <body>
+    <center><div th:object = "${chef}">
+    	<div th:if="${#fields.hasGlobalErrors()}">
+			<p class ="errori" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+	        <img th:src = "${chef.immagine}" width="180" height="180" alt ="..."> 
+		</div>
+		
+      <div th:text = " ${chef.nomeChef}"><h1> Nome chef</h1>
+      </div>
+      
+      <div>
+        <p th:text = "${chef.cognomeChef}"> Cognome chef</p>
+      </div>
+      
+      <div>
+        <img th:src = "${chef.immagine}" width="180" height="180" alt ="..."> 
+      </div>
+      
+      <div>
+        <p th:text = "${chef.nazionalita}"> nazionalita chef</p>
+      </div>
+      
+    </div></center>
+    
+    <a sec:authorize= "hasAuthority('admin')" th:href = "@{'/chef/edit/' + ${chef.id}}" >Modifica</a><hr>
+    
+     <h2 class = "allineamento"> Lista buffet</h1>
+      <div th:if ="${!chef.buffets.isEmpty()}">
+        <div th:object = " ${chef.buffets}">
+          <div  th:each="buffet : ${chef.buffets}">
+            <div>
+              <h5 th:text="${buffet.nomeBuffet}"> Nome </h5>
+              <a th:href = "@{'/buffet/' + ${buffet.id}}" >
+                <img th:src = "${buffet.immagine}" width="180" height="180">
+              </a>
+              <a sec:authorize="hasAuthority('admin')" th:href = "@{'/buffet/delete/' + ${buffet.id}}">Elimina</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:unless = "${!chef.buffets.isEmpty()}"><p> buffet non ancora presenti</p></div>
+      
+	<footer>
+	  <span><p>
+	  	<a th:href = "@{'/chef/'}">Visualizza tutti gli chef</a>
+	  	<a th:href = "@{'/'}">Torna alla Homepage</a>
+	  	<a sec:authorize= "hasAuthority('admin')" th:href = "@{'/chef/add'}">Inserisci un altro Chef</a></p></span>
+	</footer> 
+  </body>
+</html>
+
+</html>

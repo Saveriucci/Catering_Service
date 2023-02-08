@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+
+	<head>
+		<title> Catering Service </title>
+	</head>
+
+	<body>
+	<center>
+	<h1> cosa vuoi modificare?</h1>
+  	<a th:href = "@{'/ingrediente/edit/caricaImmagine/' + ${ingrediente.id}}"> L immagine dell' Ingrediente</a>
+  	<a th:href = "@{'/ingrediente/edit/edit/'+ ${ingrediente.id}} "> Le informazioni dell' Ingrediente</a>
+  	<a th:href = "@{'/ingrediente/add/piatto/' + ${ingrediente.id}} "> Aggiungi Ingrediente ad un Piatto</a>
+	</body>
+</html>

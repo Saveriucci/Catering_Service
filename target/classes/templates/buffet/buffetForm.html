@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title> Inserisci un nuovo Buffet</title>
+  </head>
+  <body>
+  	<center><form th:action="@{/buffet/}" th:object="${buffet}" 
+			method="post" style="max-width: 600px; margin: 0 auto;">
+		<div>
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p class ="errori" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+			</div>	
+			<div>
+				<label>Nome: </label>
+				<div>
+					<input type="text" th:field="*{nomeBuffet}" name = "nomeBuffet">
+				</div>
+			</div>
+			
+			<div>	
+				<label >Descrizione: </label>
+				<div>
+					<input type="text" th:field="*{descrizione}" id="descrizione" placeholder="descrizione"/>
+				</div>
+			</div>
+				<button type="submit">Aggiungi Buffet</button> 
+			</div>
+		</div>
+		</form></center>
+		<div>
+			<h3> vuoi caricare una foto di presentazione?</h3>
+			          <a th:href = "@{'/buffet/caricaImmagine/'}"> Carica</a>
+		</div>
+  </body>
+</html>

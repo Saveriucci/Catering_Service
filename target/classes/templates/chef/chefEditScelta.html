@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title> Scelta Funzioni Chef</title>
+	</head>
+
+	<body>
+	<center>
+	<h1> cosa vuoi modificare?</h1>
+  	<a th:href = "@{'/chef/edit/caricaImmagine/' + ${chef.id}}"> L immagine dello Chef</a>
+  	<a th:href = "@{'/chef/edit/edit/'+ ${chef.id}} "> Le informazioni dello Chef</a>
+  	<a th:href = "@{'/chef/add/listaBuffet/' + ${chef.id}} "> Modifica Buffet</a>
+  
+	</body>
+</html>

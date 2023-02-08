@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title>Ingrediente</title>
+  </head>
+  <body>
+    <center><div th:object = "${ingrediente}">
+    	<div th:if="${#fields.hasGlobalErrors()}">
+			<p class ="errori" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+		</div>
+      <div th:text = " ${ingrediente.nome}"><h1> Nome ingrediente</h1>
+      </div>
+     <div>
+        <img th:src = "${ingrediente.immagine}" width="180" height="180" alt ="..."> 
+      </div>
+      <div>
+        <p th:text = "${ingrediente.descrizione}"> descrizione ingrediente</p>
+      </div>
+    </div></center>
+    <a sec:authorize= "hasAuthority('admin')" th:href = "@{'/ingrediente/edit/' + ${ingrediente.id}}" >Modifica</a>
+	<footer>
+	  <span><p>
+	  	<a th:href = "@{'/ingrediente/'}">Visualizza tutti gli Ingredienti</a>
+	  	<a th:href = "@{'/'}">Torna alla Homepage</a>
+	  	<a  sec:authorize="hasAuthority('admin')" th:href = "@{'/ingrediente/add'}">Inserisci un altro Ingrediente</a></p></span>
+	</footer> 
+  </body>
+</html>

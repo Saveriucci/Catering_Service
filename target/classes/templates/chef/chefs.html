@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title>Chefs</title>
+  </head>
+  <body>
+  <h1> Lista di tutti gli Chef: </h1>
+  <div  th:each="chef : ${chefs}">
+          <div id ="es">
+            <h5 th:text = "${chef.nomeChef}"> Nome dello Chef</h5>
+            <h5 th:text = "${chef.cognomeChef}"> Cognome dello Chef</h5>
+            <a th:href = "@{'/chef/' + ${chef.id}}" >  
+            	<img th:src ="${chef.immagine}" width="180" height="180">
+            </a>
+            <a  sec:authorize="hasAuthority('admin')"  th:href = "@{'/chef/delete/' + ${chef.id}}">Cancella chef</a>
+          </div>
+        </div>
+<footer>
+  <span><p>
+  	<a th:href = "@{'/'}">Torna alla Homepage</a>
+  	<a  sec:authorize="hasAuthority('admin')"  th:href = "@{'/chef/add/'}">Inserisci un altro Chef</a>
+  	</p></span>
+</footer> 
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
+  <head>
+    <title>Buffet</title>
+  </head>
+  <body>
+    <center><div th:object = "${buffet}">
+    	<div th:if="${#fields.hasGlobalErrors()}">
+			<p class ="errori" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+		</div>
+      <div th:text = " ${buffet.nomeBuffet}"><h1> Nome Buffet</h1>
+      </div>
+     <div>
+        <img th:src = "${buffet.immagine}" width="180" height="180" alt ="..."> 
+      </div>
+      
+      
+     <div th:if ="${buffet.chef}">
+     	<h2> Proposto dallo Chef: </h2>
+        <h1 th:text = "${buffet.chef.nomeChef}">  nome chef</h1>
+      </div> 
+        <div th:unless= "${buffet.chef}"> Chef non ancora presente</div>
+        
+        
+      <div>
+        <p th:text = "${buffet.descrizione}"> descrizione buffet</p>
+      </div>
+    </div></center>
+    <a sec:authorize= "hasAuthority('admin')" th:href = "@{'/buffet/edit/' + ${buffet.id}}" >Modifica</a><hr>
+     <h2 class = "allineamento"> Lista piatti
+      <div th:if ="${buffet.piatti} ">
+        <div th:object = " ${buffet.piatti}">
+          <div  th:each="piatto : ${buffet.piatti}">
+            <div>
+              <h5 th:text="${piatto.nomePiatto}"> Nome </h5>
+              <a th:href = "@{'/piatto/' + ${piatto.id}}" >
+                <img th:src = "${piatto.immagine}" width="180" height="180">
+              </a>
+              <a sec:authorize="hasAuthority('admin')" th:href = "@{'/piatto/delete/' + ${piatto.id}} " href="/">Elimina</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:unless = "${buffet.piatti}"><p> Piatti non ancora presenti</p></div>
+      
+	<footer>
+	  <span><p>
+	  	<a th:href = "@{'/buffet/'}">Visualizza tutti i Buffet</a>
+	  	<a th:href = "@{'/'}">Torna alla Homepage</a>
+	  	<a sec:authorize="hasAuthority('admin')" th:href = "@{'/buffet/add'}">Inserisci un altro Buffet</a></p></span>
+	</footer> 
+  </body>
+</html>
