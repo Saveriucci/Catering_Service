@@ -26,14 +26,6 @@ public class PiattoValidator implements Validator{
 		if(piattoService.existsByNomePiatto(piatto.getNomePiatto())) {
 			errors.reject("piatto.duplicato");
 		}
-		
-		if(piatto.getNomePiatto().isBlank()) {
-			errors.reject("piatto.nome");
-		}
-		
-		if(piatto.getDescrizione().isBlank()) {
-			errors.reject("piatto.descrizione");
-		}
 	}
 
 }

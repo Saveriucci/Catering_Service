@@ -15,6 +15,7 @@
 				<label>Nome: </label>
 				<div>
 					<input type="text" th:field="*{nome}" id="nome" placeholder="nome">
+					<div  class = "errori" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
 				</div>
 			</div>
 			
@@ -22,6 +23,7 @@
 				<label >Origine: </label>
 				<div>
 					<input type="text" th:field="*{origine}" id="origine" placeholder="origine"/>
+					<div  class = "errori" th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></div>
 				</div>
 			</div>
 			
@@ -29,8 +31,12 @@
 				<label >Descrizione: </label>
 				<div>
 					<input type="text" th:field="*{descrizione}" id="descrizione" placeholder="descrizione"/>
+					<div  class = "errori" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 				</div>
 			</div>
+			<div>
+				<a th:href = "@{'/ingrediente/' + ${ingrediente.id}}">Annulla</a> 
+			</div>			
 				<button type="submit">Aggiorna Ingrediente</button> 
 			</div>
 		</div>

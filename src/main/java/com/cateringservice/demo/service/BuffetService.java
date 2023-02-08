@@ -42,7 +42,6 @@ public class BuffetService {
 	@Transactional
 	public void deleteAll() {
 		chefRepository.deleteAll();
-		this.buffetRepository.deleteAll();
 	}
 
 	@Transactional

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -25,6 +26,7 @@ public class Piatto {
 	private String nomePiatto;
 	
 	@NotBlank
+	@Size( min =1 ,max = 255)
 	private String descrizione;
 	
 	private String immagine;

@@ -10,7 +10,7 @@
 		    <legend> A quale Piatto vuoi aggiungere il <legend th:text = "${ingrediente.nome}"></legend> ?</legend>
 		
 		    <div th:each = "piatto : ${listaPiatti}">
-		      <p th:text = "${piatto.nomePiatto}">nome Buffet</p>
+		      <p th:text = "${piatto.nomePiatto}">nome piatto</p>
 		      <img th:src ="${piatto.immagine}" alt ="..."/>
 		    </div>
 		</fieldset>

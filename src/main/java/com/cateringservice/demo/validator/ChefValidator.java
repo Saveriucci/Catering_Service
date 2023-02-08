@@ -27,18 +27,6 @@ public class ChefValidator implements Validator{
 		if(chefService.existsByNomeChefAndCognomeChefAndNazionalita(chef.getNomeChef(), chef.getCognomeChef(), chef.getNazionalita())) {
 			errors.reject("chef.duplicato");
 		}
-		
-		if(chef.getNomeChef().isBlank()) {
-			errors.reject("chef.nome");
-		}
-		
-		if(chef.getCognomeChef().isBlank()) {
-			errors.reject("chef.cognome");
-		}
-		
-		if(chef.getNazionalita().isBlank()) {
-			errors.reject("chef.nazionalita");
-		}
 	}
 
 }

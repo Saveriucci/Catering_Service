@@ -27,18 +27,6 @@ public class IngredienteValidator implements Validator{
 		if(ingredienteService.existByNomeAndOrigine(ingrediente.getNome(), ingrediente.getOrigine())) {
 			errors.reject("ingrediente.duplicato");
 		}
-		
-		if( ingrediente.getNome().isBlank()) {
-			errors.reject("ingrediente.nome");
-		}
-		
-		if( ingrediente.getOrigine().isBlank()) {
-			errors.reject("ingrediente.origine");
-		}
-		
-		if( ingrediente.getDescrizione().isBlank()) {
-			errors.reject("ingrediente.descrizione");
-		}
 	}
 
 }

@@ -17,6 +17,7 @@
 					<label>Nome: </label>
 					<div>
 						<input type="text" th:field="*{nomePiatto}" id="nome" placeholder="nome">
+						<div  class = "errori" th:if="${#fields.hasErrors('nomePiatto')}" th:errors="*{nomePiatto}"></div>
 					</div>
 				</div>
 			
@@ -24,8 +25,12 @@
 					<label >Descrizione: </label>
 					<div>
 						<input type="text" th:field="*{descrizione}" id="descrizione" placeholder="descrizione"/>
+						<div  class = "errori" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 					</div>
 				</div>
+			<div>
+				<a th:href = "@{'/piatto/' + ${piatto.id}}">Annulla</a> 
+			</div>				
 				<button type="submit">Aggiungi piatto</button> 
 			</form>
 	</center>

@@ -25,9 +25,9 @@ public class Buffet {
 	private String nomeBuffet;
 	
 	@NotBlank
+	@Size( min =1 ,max = 255)
 	private String descrizione;
 	
-	@Size( max=500)
 	private String immagine;
 	
 	@ManyToOne( cascade = CascadeType.ALL)

@@ -31,6 +31,9 @@
 					<input type="text" th:field="*{nazionalita}" id="nazionalita" placeholder="nazionalita"/>
 				</div>
 			</div>
+			</div>
+				<a th:href = "@{'/chef/' + ${chef.id}}">Annulla</a> 
+			</div>
 				<button type="submit">Aggiorna Chef</button> 
 			</div>
 		</div>

@@ -17,13 +17,15 @@
 				<label>Username: </label>
 				<div>
 					<input type="text" th:field="*{username}" id="username" placeholder="username">
+					<div  class = "errori" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 				</div>
 			</div>
 			
 			<div>
 				<label>Password: </label>
 				<div>
-					<input type="password" th:field="*{password}" required minlength="1" id="password" placeholder="password">
+					<input type="password" th:field="*{password}" id="password" placeholder="password">
+					<div  class = "errori" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 				</div>
 			</div>
 			
@@ -31,6 +33,7 @@
 				<label >Nome: </label>
 				<div>
 					<input type="text" th:field="*{nome}" id="nome" placeholder="nome"/>
+					<div  class = "errori" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
 				</div>
 			</div>
 			
@@ -38,8 +41,12 @@
 				<label>Cognome: </label>
 				<div>
 					<input type="text" th:field="*{cognome}" id="cognome" placeholder="cognome"/>
+					<div  class = "errori" th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></div>
 				</div>
 			</div>
+			<div>
+				<a th:href = "@{'/'}">Annulla</a> 
+			</div>			
 			
 			<div>
 				<button type="submit">Sign Up</button> 

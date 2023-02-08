@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Ingrediente {
@@ -24,6 +25,7 @@ public class Ingrediente {
 	private String origine;
 	
 	@NotBlank
+	@Size(max = 255)
 	private String descrizione;
 	
 	private String immagine;

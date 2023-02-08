@@ -27,27 +27,7 @@ public class UtenteValidator implements Validator{
 		if(utenteService.existsByUsername(utente)) {
 			errors.reject("utente.duplicato");
 		}
-		String string = utente.getPassword();
-		int count = 0;
-		for( int i = 0; i < string.length(); i++){
-			count++;
-		}
 		
-		if(count < 5 ) {
-			errors.reject("utente.password");
-		}
-		
-		if(utente.getNome().isBlank()) {
-			errors.reject("utente.nome");
-		}
-		
-		if(utente.getCognome().isBlank()) {
-			errors.reject("utente.cognome");
-		}
-		
-		if(utente.getUsername().isBlank()) {
-			errors.reject("utente.username");
-		}
 	}
 
 

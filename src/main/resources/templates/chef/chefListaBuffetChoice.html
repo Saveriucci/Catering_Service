@@ -15,6 +15,9 @@
  	<p> scrivi il nome del buffet che vuoi aggiungere</p>
 	 <form th:action = "@{'/chef/add/listaBuffet/' + ${chef.id}}" method = "post">
  		<input type = "text" name = "nomeChef" required/>
+ 		</div>
+			<a th:href = "@{'/chef/' + ${chef.id}}">Annulla</a> 
+		</div>
  		<input type = "submit" value = "aggiungi Buffet"/>
 	 </form>
   </body>

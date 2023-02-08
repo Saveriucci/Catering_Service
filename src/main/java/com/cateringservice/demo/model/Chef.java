@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 
@@ -26,12 +27,15 @@ public class Chef {
 	private Long id;
 	
 	@NotBlank
+	@Size( max = 20)
 	private String nomeChef;
 	
 	@NotBlank
+	@Size( max = 20)
 	private String cognomeChef;
 	
 	@NotBlank
+	@Size( max = 20)
 	private String nazionalita;
 	
 	private String immagine;

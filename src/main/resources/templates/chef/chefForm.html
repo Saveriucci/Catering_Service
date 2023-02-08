@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel ="stylesheet" href="/css/style.css">
   <head>
     <title> Inserisci un nuovo Chef</title>
   </head>
@@ -14,6 +15,7 @@
 				<label>Nome: </label>
 				<div>
 					<input type="text" th:field="*{nomeChef}" id="nome" placeholder="nome">
+					<div  class = "errori" th:if="${#fields.hasErrors('nomeChef')}" th:errors="*{nomeChef}"></div>
 				</div>
 			</div>
 			
@@ -21,6 +23,7 @@
 				<label >Cognome: </label>
 				<div>
 					<input type="text" th:field="*{cognomeChef}" id="cognome" placeholder="cognome"/>
+					<div  class = "errori" th:if="${#fields.hasErrors('cognomeChef')}" th:errors="*{cognomeChef}"></div>
 				</div>
 			</div>
 			
@@ -28,7 +31,12 @@
 				<label >Nazionalita: </label>
 				<div>
 					<input type="text" th:field="*{nazionalita}" id="nazionalita" placeholder="nazionalita"/>
+					<div  class = "errori" th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></div>
 				</div>
+			</div>
+			</div>
+				<a th:href = "@{'/'}">Annulla</a> 
+
 			</div>
 				<button type="submit">Aggiungi Chef</button> 
 		</div>

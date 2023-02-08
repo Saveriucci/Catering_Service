@@ -9,8 +9,7 @@
         <form name="f" th:action="@{/login}" method="post">               
             <fieldset>
                 <legend>Please Login</legend>
-                <div id= "errori" th:if="${param.error}" class="alert alert-error">    
-                    Invalid username and password.
+                <div id= "errori" th:if="${param.error}" class="alert alert-error">    Username e/o password errati
                 </div>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username"/>        
@@ -20,6 +19,9 @@
                     <button type="submit" class="btn">Log in</button>
                 </div>
             </fieldset>
+			<div>
+				<a th:href = "@{/register}">Registrati</a> 
+			</div>           
         </form>
     </div>
   </body>
